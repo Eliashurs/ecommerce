@@ -1,6 +1,7 @@
 package com.eliasspringi.ecommerce.controller;
 
 
+import com.eliasspringi.ecommerce.Service.ProductService;
 import com.eliasspringi.ecommerce.model.Product;
 import com.eliasspringi.ecommerce.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,19 +11,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
-public class controller {
+public class ProductController {
 
 
 @Autowired
-private ProductRepository productRepository;
+private ProductService productService;
 
 @GetMapping
 public List<Product> getAllProducts() {
-    return productRepository.findAll();
+    return productService.getAllProducts();
 }
 @PostMapping
 public Product createProduct(@RequestBody Product product) {
-    return productRepository.save(product);
+    return productService.saveProduct(product);
 }
 
 
